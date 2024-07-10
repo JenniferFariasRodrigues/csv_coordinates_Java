@@ -72,6 +72,7 @@ Or click on "Run" in the Window.
 On your terminal put this command:
 
 http://localhost:8080/search?latitude=-23.70041&longitude=-46.53713
+---
 The expected output is:
 ```bash
 
