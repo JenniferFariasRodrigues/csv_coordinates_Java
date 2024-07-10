@@ -28,7 +28,9 @@ public class EventController {
         List<EventResponse> responses = new ArrayList<>();
         for (Event event : nearbyEvents) {
             double distance = calculateDistance(latitude, longitude, event.getLatitude(), event.getLongitude());
-            responses.add(new EventResponse(event.getDeviceId(), distance, event.getTimestamp(), event.getPayload()));
+            // responses.add(new EventResponse(event.getDeviceId(), distance, event.getTimestamp(), event.getPayload()));
+            EventResponse.Payload payload = parsePayload(event.getPayload());
+            responses.add(new EventResponse(event.getDeviceId(), distance, event.getTimestamp(), payload));
         }
         return responses;
     }
@@ -71,5 +73,14 @@ public class EventController {
         calc.setStartingGeographicPoint(lon1, lat1);
         calc.setDestinationGeographicPoint(lon2, lat2);
         return calc.getOrthodromicDistance();
+    }
+    private EventResponse.Payload parsePayload(String payload) {
+        String[] parts = payload.split(",");
+        String type = parts[0].substring(1);
+        String date = parts[1].substring(0, 2) + "/" + parts[1].substring(2, 4) + "/" + "20" + parts[1].substring(4, 6);
+        String time = parts[1].substring(6, 8) + ":" + parts[1].substring(8, 10) + ":" + parts[1].substring(10);
+        double latitude = Double.parseDouble(parts[2]);
+        double longitude = Double.parseDouble(parts[3].substring(0, parts[3].length() - 1));
+        return new EventResponse.Payload(type, date, time, latitude, longitude);
     }
 }
