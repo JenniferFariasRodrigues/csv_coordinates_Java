@@ -3,8 +3,7 @@
  <h1 align="center">CSV Coordinates</h1>
 <p align="center">
 </p>
-Backend application using Java language and Junit framework for unit tests.
-
+Backend application using Java language.
 
 ### Description 
 ---
@@ -53,6 +52,7 @@ ferramenta deverá ser disponibilizada, no futuro, através de uma API HTTP ou e
 modularidade do código e a possibilidade de se adicionar alguma forma de controle de concorrência
 (caso necessário).
 ### Starting
+---
 ```bash
 # Clone this project
 $ git clone https://github.com/JenniferFariasRodrigues/csv_coordinates_Java.git
@@ -61,36 +61,148 @@ $ git clone https://github.com/JenniferFariasRodrigues/csv_coordinates_Java.git
 On the IDE Eclipse choose the option "Import projects". On the folder "General" choose "Existing Projects into workspace" and choose  csv_coordinates_Java folder.
 
 # Choose folder in IDE and run the project
-Click on  "main_application" folder and choose "Main.java" class.
-Click on "Run" in the Window.
+On the terminal, on the file path(csv_coordinates/src/main/java/com/csv_coordinates/csv_coordinates), run the code:
+$ mvn spring-boot:run
+Or click on "Run" in the Window.
 
-# Run unit tests on Eclipse IDE
-On a project folder(csv_coordinates_Java) Click on "Run" and " Run as". 
-Select the option "JUnit Test".
 
 ```
 
 ---
 ### Output
-The expected unit test coverage is 98.4% and the expected project output is:
+---
+On your terminal put this command:
+
+http://localhost:8080/search?latitude=-23.70041&longitude=-46.53713
+
+The expected output is:
+
 ```bash
-==============================
+
+[
+    {
+        "deviceId": "3305",
+        "distance": 16.652592461887693,
+        "timestamp": "2018-12-10T09:58:00-02:00",
+        "payload": {
+            "type": "RUS00",
+            "date": "10/12/2018",
+            "time": "08:57:59",
+            "latitude": -23.70038,
+            "longitude": -46.53697
+        }
+    },
+    {
+        "deviceId": "3305",
+        "distance": 23.623046541428987,
+        "timestamp": "2018-12-10T09:58:50-02:00",
+        "payload": {
+            "type": "RUS00",
+            "date": "10/12/2018",
+            "time": "08:58:29",
+            "latitude": -23.70032,
+            "longitude": -46.53734
+        }
+    },
+    {
+        "deviceId": "3170",
+        "distance": 46.9658015506663,
+        "timestamp": "2018-12-10T10:17:50-02:00",
+        "payload": {
+            "type": "RAX12",
+            "date": "10/12/2018",
+            "time": "09:17:34",
+            "latitude": -23.70039,
+            "longitude": -46.53759
+        }
+    },
+    {
+        "deviceId": "3166",
+        "distance": 9.284046196078538,
+        "timestamp": "2018-12-10T10:19:03-02:00",
+        "payload": {
+            "type": "RUS00",
+            "date": "10/12/2018",
+            "time": "09:19:01",
+            "latitude": -23.70045,
+            "longitude": -46.53705
+        }
+    },
+    {
+        "deviceId": "3203",
+        "distance": 48.04841777460559,
+        "timestamp": "2018-12-10T10:30:44-02:00",
+        "payload": {
+            "type": "RUS00",
+            "date": "10/12/2018",
+            "time": "09:30:31",
+            "latitude": -23.70038,
+            "longitude": -46.5376
+        }
+    },
+    {
+        "deviceId": "3001",
+        "distance": 45.21420719231751,
+        "timestamp": "2018-12-10T10:37:06-02:00",
+        "payload": {
+            "type": "RAX12",
+            "date": "10/12/2018",
+            "time": "09:37:02",
+            "latitude": -23.70046,
+            "longitude": -46.53757
+        }
+    },
+    {
+        "deviceId": "3203",
+        "distance": 26.348248804392796,
+        "timestamp": "2018-12-10T10:43:26-02:00",
+        "payload": {
+            "type": "RUS00",
+            "date": "10/12/2018",
+            "time": "09:43:25",
+            "latitude": -23.70035,
+            "longitude": -46.53738
+        }
+    },
+    {
+        "deviceId": "3164",
+        "distance": 49.15331030276093,
+        "timestamp": "2018-12-10T10:54:20-02:00",
+        "payload": {
+            "type": "RAX12",
+            "date": "10/12/2018",
+            "time": "09:54:17",
+            "latitude": -23.70037,
+            "longitude": -46.53761
+        }
+    },
+    {
+        "deviceId": "3164",
+        "distance": 7.874345897394076,
+        "timestamp": "2018-12-10T10:54:32-02:00",
+        "payload": {
+            "type": "RUS00",
+            "date": "10/12/2018",
+            "time": "09:54:31",
+            "latitude": -23.70044,
+            "longitude": -46.53706
+        }
+    },
+    {
+        "deviceId": "3182",
+        "distance": 0.0,
+        "timestamp": "2018-12-10T10:55:40-02:00",
+        "payload": {
+            "type": "RUS00",
+            "date": "10/12/2018",
+            "time": "09:55:01",
+            "latitude": -23.70041,
+            "longitude": -46.53713
+        }
+    }
+]
 
 
--------------------------------
-
--------------------------------
-
-==============================
 
 
--------------------------------
-
--------------------------------
-
-
--------------------------------
-
--------------------------------
-
--------------------------------
+```
