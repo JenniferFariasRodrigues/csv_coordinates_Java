@@ -1,5 +1,6 @@
 package com.csv_coordinates.csv_coordinates;
 
+
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -51,8 +52,7 @@ public class EventController {
         nearbyEvents.sort(Comparator.comparing(Event::getTimestamp));
 
         try (PrintWriter writer = response.getWriter();
-            CSVPrinter csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT.withHeader("deviceId", "distance", "timestamp", "type", "date", "time", "latitude", "longitude"))) {
-
+        CSVPrinter csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT.withHeader("deviceId", "distance", "timestamp", "type", "date", "time", "latitude", "longitude"))) {
             for (Event event : nearbyEvents) {
                 double distance = calculateDistance(latitude, longitude, event.getLatitude(), event.getLongitude());
                 EventResponse.Payload payload = parsePayload(event.getPayload());
@@ -68,6 +68,8 @@ public class EventController {
                         String.format("%.5f", payload.getLongitude())
                 );
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
