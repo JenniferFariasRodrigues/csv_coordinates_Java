@@ -40,7 +40,8 @@ public class EventController {
     }
 
     @GetMapping("/export")
-    public void exportEvents(@RequestParam double latitude, @RequestParam double longitude, HttpServletResponse response) throws IOException {
+    public void exportEvents(@RequestParam double latitude, @RequestParam double longitude,
+            HttpServletResponse response) throws IOException {
         response.setContentType("text/csv");
         response.setHeader("Content-Disposition", "attachment; filename=\"events.csv\"");
 
@@ -51,7 +52,8 @@ public class EventController {
         nearbyEvents.sort(Comparator.comparing(Event::getTimestamp));
 
         try (PrintWriter writer = response.getWriter();
-             CSVPrinter csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT.withDelimiter(',').withHeader("deviceId", "distance", "timestamp", "type", "date", "time", "latitude", "longitude"))) {
+                CSVPrinter csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT.withDelimiter(',').withHeader(
+                        "deviceId", "distance", "timestamp", "type", "date", "time", "latitude", "longitude"))) {
 
             for (Event event : nearbyEvents) {
                 double distance = calculateDistance(latitude, longitude, event.getLatitude(), event.getLongitude());
@@ -65,8 +67,7 @@ public class EventController {
                         payload.getDate(),
                         payload.getTime(),
                         String.format("%.5f", payload.getLatitude()).replace('.', ','),
-                        String.format("%.5f", payload.getLongitude()).replace('.', ',')
-                );
+                        String.format("%.5f", payload.getLongitude()).replace('.', ','));
             }
         } catch (IOException e) {
             e.printStackTrace();
