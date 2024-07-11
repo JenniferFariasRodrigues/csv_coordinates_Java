@@ -9,7 +9,8 @@ public class Event {
     private String payload;
     private String company;
 
-    public Event(String deviceId, String eventId, String timestamp, double latitude, double longitude, String payload, String company) {
+    public Event(String deviceId, String eventId, String timestamp, double latitude, double longitude, String payload,
+            String company) {
         this.deviceId = deviceId;
         this.eventId = eventId;
         this.timestamp = timestamp;
