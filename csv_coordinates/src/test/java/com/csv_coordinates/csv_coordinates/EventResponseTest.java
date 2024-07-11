@@ -4,22 +4,43 @@
 
 // import org.junit.jupiter.api.Test;
 
-// class EventResponseTest {
+// public class EventResponseTest {
 // 	@Test
-// 	void EventResponse() {
+// 	public void EventResponse() {
 // 		String deviceId = "abc";
 // 		double distance = 123.4D;
 // 		String timestamp = "abc";
 // 		EventResponse.Payload payload = new EventResponse.Payload("abc", "abc", "abc", 123.4D, 123.4D);
-// 		EventResponse expected = new EventResponse("abc", 123.4D, "abc", new EventResponse.Payload("abc", "abc", "abc", 123.4D, 123.4D));
-// 		EventResponse actual = new EventResponse(deviceId, distance, timestamp, payload);
+// 		com.csv_coordinates.csv_coordinates.EventResponse expected = new com.csv_coordinates.csv_coordinates.EventResponse("abc", 123.4D, "abc", new EventResponse.Payload("abc", "abc", "abc", 123.4D, 123.4D));
+// 		com.csv_coordinates.csv_coordinates.EventResponse actual = new com.csv_coordinates.csv_coordinates.EventResponse(deviceId, distance, timestamp, payload);
 
 // 		assertEquals(expected, actual);
 // 	}
 
 // 	@Test
-// 	void getDistance() {
-// 		EventResponse e = new EventResponse("abc", 123.4D, "abc", new EventResponse.Payload("abc", "abc", "abc", 123.4D, 123.4D));
+// 	public void EventResponseTODO() {
+// 		String deviceId = "abc";
+// 		double distance = 123.4D;
+// 		String timestamp = "abc";
+// 		EventResponse.Payload payload = new EventResponse.Payload("abc", "abc", "abc", 123.4D, 123.4D);
+// 		com.csv_coordinates.csv_coordinates.EventResponse expected = new com.csv_coordinates.csv_coordinates.EventResponse("abc", 123.4D, "abc", new EventResponse.Payload("abc", "abc", "abc", 123.4D, 123.4D));
+// 		com.csv_coordinates.csv_coordinates.EventResponse actual = new com.csv_coordinates.csv_coordinates.EventResponse(deviceId, distance, timestamp, payload);
+
+// 		assertEquals(expected, actual);
+// 	}
+
+// 	@Test
+// 	public void getDeviceId() {
+// 		com.csv_coordinates.csv_coordinates.EventResponse e = new com.csv_coordinates.csv_coordinates.EventResponse("abc", 123.4D, "abc", new EventResponse.Payload("abc", "abc", "abc", 123.4D, 123.4D));
+// 		String expected = "abc";
+// 		String actual = e.getDeviceId();
+
+// 		assertEquals(expected, actual);
+// 	}
+
+// 	@Test
+// 	public void getDistance() {
+// 		com.csv_coordinates.csv_coordinates.EventResponse e = new com.csv_coordinates.csv_coordinates.EventResponse("abc", 123.4D, "abc", new EventResponse.Payload("abc", "abc", "abc", 123.4D, 123.4D));
 // 		double expected = 123.4D;
 // 		double actual = e.getDistance();
 
@@ -27,8 +48,8 @@
 // 	}
 
 // 	@Test
-// 	void getTimestamp() {
-// 		EventResponse e = new EventResponse("abc", 123.4D, "abc", new EventResponse.Payload("abc", "abc", "abc", 123.4D, 123.4D));
+// 	public void getTimestamp() {
+// 		com.csv_coordinates.csv_coordinates.EventResponse e = new com.csv_coordinates.csv_coordinates.EventResponse("abc", 123.4D, "abc", new EventResponse.Payload("abc", "abc", "abc", 123.4D, 123.4D));
 // 		String expected = "abc";
 // 		String actual = e.getTimestamp();
 
@@ -36,8 +57,8 @@
 // 	}
 
 // 	@Test
-// 	void getPayload() {
-// 		EventResponse e = new EventResponse("abc", 123.4D, "abc", new EventResponse.Payload("abc", "abc", "abc", 123.4D, 123.4D));
+// 	public void getPayload() {
+// 		com.csv_coordinates.csv_coordinates.EventResponse e = new com.csv_coordinates.csv_coordinates.EventResponse("abc", 123.4D, "abc", new EventResponse.Payload("abc", "abc", "abc", 123.4D, 123.4D));
 // 		EventResponse.Payload expected = new EventResponse.Payload("abc", "abc", "abc", 123.4D, 123.4D);
 // 		EventResponse.Payload actual = e.getPayload();
 
@@ -45,7 +66,20 @@
 // 	}
 
 // 	@Test
-// 	void payloadGetType() {
+// 	public void payloadPayload() {
+// 		String type = "abc";
+// 		String date = "abc";
+// 		String time = "abc";
+// 		double latitude = 123.4D;
+// 		double longitude = 123.4D;
+// 		EventResponse.Payload expected = new EventResponse.Payload("abc", "abc", "abc", 123.4D, 123.4D);
+// 		EventResponse.Payload actual = new EventResponse.Payload(type, date, time, latitude, longitude);
+
+// 		assertEquals(expected, actual);
+// 	}
+
+// 	@Test
+// 	public void payloadGetType() {
 // 		EventResponse.Payload p = new EventResponse.Payload("abc", "abc", "abc", 123.4D, 123.4D);
 // 		String expected = "abc";
 // 		String actual = p.getType();
@@ -54,7 +88,7 @@
 // 	}
 
 // 	@Test
-// 	void payloadGetDate() {
+// 	public void payloadGetDate() {
 // 		EventResponse.Payload p = new EventResponse.Payload("abc", "abc", "abc", 123.4D, 123.4D);
 // 		String expected = "abc";
 // 		String actual = p.getDate();
@@ -63,16 +97,7 @@
 // 	}
 
 // 	@Test
-// 	void payloadGetTime() {
-// 		EventResponse.Payload p = new EventResponse.Payload("abc", "abc", "abc", 123.4D, 123.4D);
-// 		String expected = "abc";
-// 		String actual = p.getTime();
-
-// 		assertEquals(expected, actual);
-// 	}
-
-// 	@Test
-// 	void payloadGetLatitude() {
+// 	public void payloadGetLatitude() {
 // 		EventResponse.Payload p = new EventResponse.Payload("abc", "abc", "abc", 123.4D, 123.4D);
 // 		double expected = 123.4D;
 // 		double actual = p.getLatitude();
@@ -81,7 +106,7 @@
 // 	}
 
 // 	@Test
-// 	void payloadGetLongitude() {
+// 	public void payloadGetLongitude() {
 // 		EventResponse.Payload p = new EventResponse.Payload("abc", "abc", "abc", 123.4D, 123.4D);
 // 		double expected = 123.4D;
 // 		double actual = p.getLongitude();
