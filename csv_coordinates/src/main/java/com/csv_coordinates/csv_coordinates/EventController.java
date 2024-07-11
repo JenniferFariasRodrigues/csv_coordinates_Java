@@ -52,6 +52,7 @@ public class EventController {
         nearbyEvents.sort(Comparator.comparing(Event::getTimestamp));
 
         try (PrintWriter writer = response.getWriter();
+                @SuppressWarnings("deprecation")
                 CSVPrinter csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT.withDelimiter(',').withHeader(
                         "deviceId", "distance", "timestamp", "type", "date", "time", "latitude", "longitude"))) {
 
