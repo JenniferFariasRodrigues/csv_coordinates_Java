@@ -52,20 +52,21 @@ public class EventController {
         nearbyEvents.sort(Comparator.comparing(Event::getTimestamp));
 
         try (PrintWriter writer = response.getWriter();
-        CSVPrinter csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT.withHeader("deviceId", "distance", "timestamp", "type", "date", "time", "latitude", "longitude"))) {
+        @SuppressWarnings("deprecation")
+        CSVPrinter csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT.withDelimiter(',').withHeader("deviceId", "distance", "timestamp", "type", "date", "time", "latitude", "longitude"))) {
             for (Event event : nearbyEvents) {
                 double distance = calculateDistance(latitude, longitude, event.getLatitude(), event.getLongitude());
                 EventResponse.Payload payload = parsePayload(event.getPayload());
 
                 csvPrinter.printRecord(
                         event.getDeviceId(),
-                        String.format("%.2f", distance),
+                        String.format("%.2f", distance).replace('.', ','),
                         event.getTimestamp(),
                         payload.getType(),
                         payload.getDate(),
                         payload.getTime(),
-                        String.format("%.5f", payload.getLatitude()),
-                        String.format("%.5f", payload.getLongitude())
+                        String.format("%.5f", payload.getLatitude()).replace('.', ','),
+                        String.format("%.5f", payload.getLongitude()).replace('.', ',')
                 );
             }
         } catch (IOException e) {
