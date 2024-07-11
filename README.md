@@ -203,6 +203,7 @@ The expected output is:
     }
 ]
 
+
+```
 - CSV file downloaded.
 <img src="/csv_coordinates/src/img/output_csv_file.jpeg">
-```
