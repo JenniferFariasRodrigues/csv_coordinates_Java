@@ -1,11 +1,15 @@
 package com.csv_coordinates.csv_coordinates;
 
+
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVPrinter;
 import org.geotools.referencing.GeodeticCalculator;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,6 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvException;
+
+import jakarta.servlet.http.HttpServletResponse;
 
 @RestController
 public class EventController {
@@ -32,6 +38,40 @@ public class EventController {
             responses.add(new EventResponse(event.getDeviceId(), distance, event.getTimestamp(), payload));
         }
         return responses;
+    }
+
+    @GetMapping("/export")
+    public void exportEvents(@RequestParam double latitude, @RequestParam double longitude, HttpServletResponse response) throws IOException {
+        response.setContentType("text/csv");
+        response.setHeader("Content-Disposition", "attachment; filename=\"events.csv\"");
+
+        String csvFile = "/home/jennifer/Documentos/Pessoal/Wplex_test/csv-index/data/eventlog.csv";
+        List<Event> events = readEvents(csvFile);
+        List<Event> nearbyEvents = findNearbyEvents(events, latitude, longitude, 50.0);
+
+        nearbyEvents.sort(Comparator.comparing(Event::getTimestamp));
+
+        try (PrintWriter writer = response.getWriter();
+        @SuppressWarnings("deprecation")
+        CSVPrinter csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT.withDelimiter(',').withHeader("deviceId", "distance", "timestamp", "type", "date", "time", "latitude", "longitude"))) {
+            for (Event event : nearbyEvents) {
+                double distance = calculateDistance(latitude, longitude, event.getLatitude(), event.getLongitude());
+                EventResponse.Payload payload = parsePayload(event.getPayload());
+
+                csvPrinter.printRecord(
+                        event.getDeviceId(),
+                        String.format("%.2f", distance).replace('.', ','),
+                        event.getTimestamp(),
+                        payload.getType(),
+                        payload.getDate(),
+                        payload.getTime(),
+                        String.format("%.5f", payload.getLatitude()).replace('.', ','),
+                        String.format("%.5f", payload.getLongitude()).replace('.', ',')
+                );
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private List<Event> readEvents(String csvFile) {
