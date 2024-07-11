@@ -71,7 +71,7 @@ Or click on "Run" in the Window.
 ---
 ### Output
 ---
-On your terminal put this command:
+On your terminal, put this command:
 
 http://localhost:8080/search?latitude=-23.70041&longitude=-46.53713
 
@@ -79,9 +79,3 @@ The expected output is:
 - CSV file downloaded.
 <img src="/csv_coordinates/src/img/output_csv_image.jpeg">
 
-```bash
-<img src="/csv_coordinates/src/img/output_csv.image.jpeg">
-
-```
-- CSV file downloaded.
-<img src="/csv_coordinates/src/img/output_csv_image.jpeg">
