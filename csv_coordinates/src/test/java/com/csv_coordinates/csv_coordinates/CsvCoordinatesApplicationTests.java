@@ -8,6 +8,12 @@ class CsvCoordinatesApplicationTests {
 
 	@Test
 	void contextLoads() {
-	}
+   // TODO document why this method is empty
+}
 
+	@Test
+	void main() {
+		String[] args = { "abc", "abc", "abc" };
+		CsvCoordinatesApplication.main(args);
+	}
 }
